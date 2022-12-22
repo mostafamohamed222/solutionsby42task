@@ -96,7 +96,7 @@ class AppBloc extends Bloc<AppEvent, AppState> {
       "messageTitle": event.messageTitle,
       "messageType": event.messageType,
       "messageDesc": event.messageDesc,
-      "attachment": "",
+      "attachment": event.attachment?? "",
     });
     // pass id with state to show it in send request page
     emit(SuccessSendRequestToAPIState(

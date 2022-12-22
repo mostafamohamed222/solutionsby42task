@@ -141,12 +141,12 @@ class _LoginForm2State extends State<LoginForm2> {
               InkWell(
                 onTap: () async {
                   image = await ImagePicker()
-                      .pickImage(source: ImageSource.gallery);
+                      .pickImage(source: ImageSource.gallery,imageQuality: 90 , maxHeight: 100 , maxWidth: 100);
 
                   Uint8List imagebytes =
                       await image!.readAsBytes(); //convert to bytes
                   base64string = base64.encode(imagebytes);
-                  print(base64string);
+                  print(base64string.length);
                 },
                 child: Container(
                   width: MediaQuery.of(context).size.width * 7,
@@ -174,7 +174,7 @@ class _LoginForm2State extends State<LoginForm2> {
                         messageTitle: _titleController.text,
                         messageDesc: _descraptionController.text,
                         messageType: AppBloc.get(context).requestType,
-                        attachment: "",
+                        attachment: base64string
                       ),
                     );
                   }
